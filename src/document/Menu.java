@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 class Menu {
 	public Menu() {}
+	
 	public int iniciar(Scanner scan, Integer selection, TreeSet<Branch> branches) {
 		
 		while(selection < 1 || selection > 6) {
@@ -39,10 +40,14 @@ class Menu {
 		}
 	}
 	
-	public void novoDocumento(Scanner scan, TreeSet<Branch> branches) {
-		System.out.println("Digite o nome do novo documento (leaf)");
-		String name = scan.next(branches.put(scan, branches));
+	public void novoDocumento(Scanner scan, TreeSet<Leaf> leaves) {
 		
+		System.out.println("Digite o nome do novo documento (leaf)");
+		String name = scan.next();
+		if(leaves.isEmpty()) {
+		} else {
+		leaves.add(new Leaf(leaves.size(), name)); 
+		}
 	}
 	
 	public void monitoramento() {
