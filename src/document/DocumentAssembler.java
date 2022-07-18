@@ -6,71 +6,43 @@ import java.util.TreeSet;
 public class DocumentAssembler {
 	
 	public static void main(String[] args) throws Exception {
-		
 		Integer selection = 0;
 		TreeSet<Branch> branches = new TreeSet<Branch>();
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("_____________________");
-		System.out.println("|                    |");
-		System.out.println("|   Bem vindo ao     |");
-		System.out.println("| Document Assembler |");
-		System.out.println("|____________________|");
+		Menu menu = new Menu();
 		
-		System.out.println("Selecione 0 a qualquer momento para sair.");
-		System.out.println("");
+		System.out.println("____________________");
+		System.out.println("|                   |");
+		System.out.println("|   Bem vindo ao    |");
+		System.out.println("|Document Assembler |");
+		System.out.println("|___________________|");
 		
-		while(!selection.equals(0)); {
-		
-		if (branches.isEmpty()) {
-			System.out.println("Àrvore de documentos está vazia");
-			selection = scan.nextInt();
-		} else {
-				
-			System.out.println("Gostaria de criar nova branch?");
-			System.out.println("1. Sim");
-			System.out.println("2. Não, mostre o status");
-		
-			selection = scan.nextInt();
-				} 
-		
-		if(selection == 1) {
-			// ${BRANCH}+[0];
-				Branch branch1 = new Branch("Branch1");
-				branches.add(branch1);
-			} else if (selection == 2) {
-				for(Branch branch : branches) {
-					System.out.println(branches);
-				}
+		while(selection != 5) {
+			selection = 0;
+			selection = menu.iniciar(scan,  selection, branches);
 			
-			} else {
-				System.out.println("Favor informar valor válido");;
+		switch(selection) {
+		case 1:
+			menu.cadastrar(scan, branches);
+			break;
+		case 2:
+			menu.listar(scan, branches);
+			break;
+		case 3:
+			menu ;
+			break;
+		case 4:
+			menu ;
+			break;
+		case 5: 
+			menu ;
+			break;
+		default:
+			System.out.println("Opção inválida");
+			break;
 			}
-				
 		}
 		
-		
-		/*
-		
-
-	if(branches.isEmpty()) {
-			System.out.println("Árvore de documentos está vazia.");
-			
-			System.out.println("Gostaria de criar novo documento?");
-			System.out.println("1. Sim");
-			System.out.println("2. Não");
-			selection = scan.nextInt();
-			
-		} else {
-			for (Branch branch : branches) {
-				System.out.println(branch);
-			}
-
-	
-			System.out.println("Favor selecionar opção válida");
-			System.out.println("1 - Criar nova 'branch'");
-			System.out.println("1 - Criar nova 'branch'");
-	*/
-		scan.close();
-			
-		}}
+	}
+}
