@@ -6,6 +6,8 @@ import java.util.TreeSet;
 class Menu {
 	public Menu() {}
 	
+	Branch branchAtual;
+	
 	public int iniciar(Scanner scan, Integer selection, TreeSet<Branch> branches) {
 		
 		while(selection < 1 || selection > 6) {
@@ -18,9 +20,11 @@ class Menu {
 			System.out.println("1. Sim");
 			System.out.println("2. Não, mostre o status");
 			if (!branches.isEmpty()) {
-				System.out.println("3. Adicionar nova leaf (documento) na branch atual.");
-				System.out.println("4. Adicionar novo documento");
-				System.out.println("5. Monitoramento avançado");
+				System.out.println("3. Selecionar branch?");
+				if(branchAtual != null) {
+					System.out.println("4. Adicionar leaf (novo documento)");
+					System.out.println("5. Imprimir documentos)");
+				}
 			}
 			System.out.println("6. sair");
 			selection = scan.nextInt();
@@ -40,18 +44,33 @@ class Menu {
 		}
 	}
 	
-	public void novoDocumento(Scanner scan, TreeSet<Leaf> leaves) {
-		
-		System.out.println("Digite o nome do novo documento (leaf)");
-		String name = scan.next();
-		if(leaves.isEmpty()) {
-		} else {
-		leaves.add(new Leaf(leaves.size(), name)); 
-		}
+	public void imprimir(Scanner scan, TreeSet<Branch> branches) {
+		System.out.println(branches.last());
 	}
 	
-	public void monitoramento() {
-		System.out.println();
+	public void novoDocumento(Scanner scan) {
+		
+		System.out.println("Insira o nome da nova 'leaf'");
+		String leafText = scan.next();
+		
+		branchAtual.addLeaf(leafText);
+	}
+	
+	public Branch encontrarBranch(Scanner scan, TreeSet<Branch> branches) {
+		System.out.println("Digite o nome da branch que você deseja encontrar...");
+		String name = scan.next();
+		for(Branch branch: branches) {
+			if(branch.getName().equalsIgnoreCase(name)) {
+				return branch;
+			}
+		}
+		return null;
+	}
+	
+	public void monitorar(Scanner scan, TreeSet<Branch> branches) {
+		System.out.println("Quantidade de branches: " + branches.size());
+		System.out.println("Primeira branch: " + branches.first());
+		System.out.println("Ultima branch: " + branches.last());
 	}
 	
 }

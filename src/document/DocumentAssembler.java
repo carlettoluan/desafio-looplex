@@ -20,7 +20,7 @@ public class DocumentAssembler {
 		
 		while(selection != 6) {
 			selection = 0;
-			selection = menu.iniciar(sacan, selection, branches);
+			selection = menu.iniciar(scan, selection, branches);
 			
 		switch(selection) {
 		case 1:
@@ -30,13 +30,16 @@ public class DocumentAssembler {
 			menu.listar(scan, branches);
 			break;
 		case 3:
-			menu.novoDocumento(scan, leaves);
+			menu.branchAtual = menu.encontrarBranch(scan, branches);
 			break;
 		case 4:
-			menu ;
+			menu.novoDocumento(scan);
 			break;
 		case 5:
-			menu ;
+			menu.monitorar(scan, branches);;
+			break;
+		case 6:
+			System.out.println("Saindo...");
 			break;
 		default:
 			System.out.println("Opção inválida");

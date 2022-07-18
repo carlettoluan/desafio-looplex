@@ -7,6 +7,8 @@ public class Branch implements Comparable<Branch> {
 	private String name;
 	private TreeSet<Leaf> leaves;
 	
+	public Branch() { }
+	
 	public Branch(String text) {
 		this.name = text;
 		this.leaves = new TreeSet<Leaf>();
@@ -34,6 +36,22 @@ public class Branch implements Comparable<Branch> {
 		public String showBranchStatus() {
 			return name + ": " + leaves.size();
 
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public TreeSet<Leaf> getLeaves() {
+			return leaves;
+		}
+
+		public void setLeaves(TreeSet<Leaf> leaves) {
+			this.leaves = leaves;
 		}
 		
 	}
