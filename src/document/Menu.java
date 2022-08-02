@@ -23,7 +23,7 @@ class Menu {
 				System.out.println("3. Selecionar branch?");
 				if(branchAtual != null) {
 					System.out.println("4. Adicionar leaf (novo documento)");
-					System.out.println("5. Imprimir documentos)");
+					System.out.println("5. Imprimir documentos");
 				}
 			}
 			System.out.println("6. sair");
